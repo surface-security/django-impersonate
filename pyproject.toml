@@ -33,6 +33,20 @@ dev = ["black==23.1.0", "ruff==0.0.256"]
 [tool.setuptools]
 packages = ["impersonate"]
 
+[tool.coverage.run]
+source = ["impersonate"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "testapp.settings"
+python_files = [
+    "tests.py",
+    "test_*.py",
+]
+
 [tool.black]
 line-length = 120
 skip-string-normalization = true
