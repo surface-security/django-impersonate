@@ -36,7 +36,7 @@ class ImpersonateMiddleware:
             bits = re.split(pattern, content, flags=re.IGNORECASE)
             if len(bits) > 1:
                 bits[-2] += render_to_string(
-                    'impersonate.html',
+                    'impersonate/popup.html',
                     {
                         'new_user': new_user,
                         'new_username': new_username,
