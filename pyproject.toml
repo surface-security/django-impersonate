@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "django-impersonate"
-version = "1.0.0"
+version = "0.0.1"
 authors = [
     {name = "InfoSec Engineering", email = "surface@paddypowerbetfair.com"},
 ]
@@ -29,6 +29,9 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["black==23.1.0", "ruff==0.0.256"]
+
+[tool.setuptools]
+packages = ["impersonate"]
 
 [tool.black]
 line-length = 120
@@ -67,4 +70,4 @@ select = [
     'W',
     "I001",
 ]
-src = ['surface']
+src = ['impersonate']

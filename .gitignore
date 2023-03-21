@@ -60,3 +60,4 @@ target/
 
 .idea/
 *.sw[op]
+*.sqlite3
