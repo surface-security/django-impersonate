@@ -3,7 +3,7 @@ style:
 	black --target-version=py37 \
 	      --line-length=120 \
 		  --skip-string-normalization \
-		  impersonate testapp setup.py
+		  impersonate testapp
 
 .PHONY: style_check
 style_check:
@@ -11,7 +11,7 @@ style_check:
 	      --line-length=120 \
 		  --skip-string-normalization \
 		  --check \
-		  impersonate testapp setup.py
+		  impersonate testapp
 
 test:
 	testapp/manage.py test $${TEST_ARGS:-tests}
