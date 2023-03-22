@@ -5,12 +5,24 @@ from django.db import migrations
 
 def create_test_users(apps, schema_editor):
     User = apps.get_model('auth', 'User')
+    Permission = apps.get_model('auth', 'Permission')
+    CT = apps.get_model('contenttypes', 'ContentType')
     u = User.objects.create_superuser('admin', 'admin@myproject.com', 'admin')
     u.is_staff = True
     u.save()
     u = User.objects.create_user('guest', 'guest@myproject.com', 'guest')
     u.is_staff = True
     u.save()
+    u = User.objects.create_user('usermonitor', 'usermonitor@myproject.com', 'usermonitor')
+    u.is_staff = True
+    u.save()
+    # permission might not exist yet, just create it
+    content_type = CT.objects.get_for_model(User)
+    permission = Permission.objects.create(
+        codename="view_user",
+        content_type=content_type,
+    )
+    u.user_permissions.add(permission)
 
 
 class Migration(migrations.Migration):
@@ -19,5 +31,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(create_test_users),
+        migrations.RunPython(create_test_users, reverse_code=migrations.RunPython.noop),
     ]
