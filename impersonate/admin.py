@@ -1,5 +1,6 @@
-from django.shortcuts import HttpResponseRedirect
 from django.contrib import admin
+from django.shortcuts import HttpResponseRedirect
+
 from .middleware import COOKIE_NAME
 
 
