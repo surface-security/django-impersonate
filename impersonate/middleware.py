@@ -12,11 +12,6 @@ class ImpersonateMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
 
-        # One-time configuration and initialization.
-        # TODO: add some check to disable impersonate functionality?
-        # if not settings:
-        #   raise django.core.exceptions.MiddlewareNotUsed
-
     def __call__(self, request):
         new_username = request.COOKIES.get(COOKIE_NAME)
         new_user = None
@@ -41,7 +36,7 @@ class ImpersonateMiddleware:
             bits = re.split(pattern, content, flags=re.IGNORECASE)
             if len(bits) > 1:
                 bits[-2] += render_to_string(
-                    'impersonate.html',
+                    'impersonate/popup.html',
                     {
                         'new_user': new_user,
                         'new_username': new_username,
