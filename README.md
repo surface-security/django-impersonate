@@ -1,6 +1,20 @@
 # django-impersonate
 
-WIP
+This Django app lets admin users impersonate other users, useful when testing and debugging permissions.
+
+**Non superusers are not allowed** to perform this request, even if they have view rights to the `User` model, so that this cannot be used for privilege escalation.
+
+As admin, I can choose the "Impersonate" action:
+
+![image](https://user-images.githubusercontent.com/7786556/228572564-6549367d-3ee4-4b0b-a978-a3467388b654.png)
+
+Impersonations are terminated by closing the bottom left pop-up.
+
+![image](https://user-images.githubusercontent.com/7786556/228573725-9bde3dbd-1df0-4884-a333-95165cac880a.png)
+
+
+Impersonate is not available for regular users, returning an error for those with view rights to the `User` model.
+
 
 ## Setup
 
